@@ -1,13 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { BlockUiComponent } from '@notes/shared/components/block-ui/block-ui.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'app-root',
+  selector: 'notes-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    MatProgressSpinnerModule,
+    RouterOutlet,
+    BlockUiComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'dApp-notes';
+  readonly isLoading = signal<boolean>(false);
+
+
+  testLoading() {
+    this.isLoading.set(true);
+
+    setTimeout(() => {
+      this.isLoading.set(false);
+    }, 3000);
+  }
 }
