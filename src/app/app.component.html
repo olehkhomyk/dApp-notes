@@ -1,0 +1,15 @@
+
+<button (click)="testLoading()">
+  test loading
+</button>
+
+<div class="tech-main">
+  <div class="tech-main__container">
+    <tech-block-ui [isBlocked]="isLoading()">
+      <mat-spinner></mat-spinner>
+    </tech-block-ui>
+    <div class="tech-main-container__outlet">
+      <router-outlet/>
+    </div>
+  </div>
+</div>
